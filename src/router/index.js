@@ -1,28 +1,97 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-
+import Film from '@/views/film/Film'
+import Cinema from '@/views/cinema/Cinema'
+import Center from '@/views/Center'
+import Nowplay from '@/views/film/component/Nowplay'
+import Comming from '@/views/film/component/Comming'
+import FilmDetail from '@/views/film/component/Filmdetail'
+import Cinemas from '@/views/cinema/component/Cinemas'
+import Cinemadetail from '@/views/cinema/component/Cinemadetail'
+import City from '@/views/City'
+import login from '@/views/login'
+import Sign from '@/views/Sign'
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
+const routes = [{
+ 
+  path: '/film',
+    name: 'film',
+    component: Film,
+    children:[
+      {
+        path:'nowplay',
+        component:Nowplay,
+        meta:{
+          translateX:0
+        }
+      },
+      {
+        path:'comming',
+        component:Comming,
+        meta:{
+          translateX:'100%'
+        }
+      },
+      {
+        path:'',
+        redirect:'/film/nowplay'
+      }
+    ]
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path:'/city',
+    name:'City',
+    component:City
+  },
+  {
+    path:'/films/:id',
+    name:'filmDetail',
+    component:FilmDetail,
+  },
+  {
+    path: '/cinema',
+    name: 'Cinema',
+    component: Cinema
+  },
+  {
+    path:'/',
+    redirect:'/film/nowplay'
+  },
+  {
+    path:'/center',
+    name:'Center',
+    component:Center
+  },
+  {
+    path:'/cinemas/:cinemaId',
+    name:'Cinemas',
+    component:Cinemas,
+    children:[
+      {
+        path:':filmid/:timeId',
+        name:'Cinemadetail',
+        component:Cinemadetail      
+      }]
+  },
+  {
+    path:'/login',
+    name:'login',
+    component:login
+  },
+  {
+    path:'/Sign',
+    name:'Sign',
+    component:Sign
   }
 ]
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  // 将垂直滚动条定位在0
+  scrollBehavior (to, from, savedPosition) {
+    return { y: 0 }
+  },
+  mode:'hash',
   routes
 })
 

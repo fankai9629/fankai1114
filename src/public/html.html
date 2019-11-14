@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.3&key=20adb6641aec3367d70e7afc2d51710f"></script>
+</head>
+<body>
+
+    <script>
+        let ids =[-1,-5,-8,-10];
+        let b = '';
+        for(let i=0;i<ids.length;i++){
+            b+= 'id='+ids[i]+'&'
+        }  
+        b = "?"+b
+         console.log(b);
+
+        let max = 0
+        let fn = function(arr){
+            for(let i=0;i<arr.length;i++){
+                max =arr[0]
+                if(arr[i]>max){
+                    max =arr[i]    
+                }
+            }
+            return max
+        }
+        fn(ids)
+
+        let fn1=function(arr){
+            for(let i=0;i<arr.length;i++){
+                max=arr[0]
+                if(arr[i]<max){
+                    max =arr[i]
+                }
+            }
+            return max
+        }
+        fn1(ids)
+
+
+    </script>
+</body>
+</html>
