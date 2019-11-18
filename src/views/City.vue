@@ -102,7 +102,7 @@ export default {
   methods: {
     init() {
       getCityLists().then(res => {
-        console.log(res, "----------");
+        // console.log(res, "----------");
         this.lists = res.data.cities;
         this.ishot = res.data.cities.filter(item => item.isHot == 1);
         this.nowcityId = res.data.cities.filter(

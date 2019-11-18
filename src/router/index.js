@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Film from '@/views/film/Film'
 import Cinema from '@/views/cinema/Cinema'
-import Center from '@/views/Center'
+import Center from '@/views/Center/Center'
 import Nowplay from '@/views/film/component/Nowplay'
 import Comming from '@/views/film/component/Comming'
 import FilmDetail from '@/views/film/component/Filmdetail'
@@ -11,6 +11,7 @@ import Cinemadetail from '@/views/cinema/component/Cinemadetail'
 import City from '@/views/City'
 import login from '@/views/login'
 import Sign from '@/views/Sign'
+import User from '@/views/Center/User'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -83,6 +84,11 @@ const routes = [{
     path:'/Sign',
     name:'Sign',
     component:Sign
+  },
+  {
+    path:'/user',
+    name:'User',
+    component:User
   }
 ]
 

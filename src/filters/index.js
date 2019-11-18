@@ -62,3 +62,13 @@ export const loginuser=(data)=>{
         return localStorage.getItem('username')
     }
 }
+
+export const masaike=(data)=>{
+    console.log(data)
+    if(!data){
+        return 
+    }
+    return data.substr(0,3) + "****"+data.substr(7)
+
+    // return data.splice(3,4,'****')
+}

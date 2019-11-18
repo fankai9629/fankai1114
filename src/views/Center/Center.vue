@@ -5,7 +5,7 @@
         <img class="avator-icon" src="@/assets/img/touxiang.png" alt v-show="change" />
         <img class="avator-icon" src="@/assets/img/login.jpg" alt v-show="!change" />
         <router-link v-show="change" :to="{name:'Sign',path:'/sign'}"><div class="nick-name">{{loginname}}</div></router-link>
-        <div v-show="!change" ><div class="nick-name">{{$store.state.username}}</div></div>
+        <div v-show="!change" ><div class="nick-name">{{username|masaike}}</div></div>
       </div>
       <ul class="my-order-tab">
         <li>
@@ -48,7 +48,8 @@ export default {
   data(){
     return{
       change:true,
-      loginname:'立即登录'
+      loginname:'立即登录',
+      username:sessionStorage.getItem('username')
     }
   },
   created(){

@@ -62,10 +62,9 @@ export default {
       var _this = this;
       var swiper = new Swiper(".cinema-img", {
         spaceBetween: 8,
-        centeredSlides: true,
-        slideToClickedSlide: true,
-        centeredSlides: true,
+         slideToClickedSlide: true,
         slidesPerView: 3.9,
+        centeredSlides : true,
         on: {
           slideChangeTransitionStart: function() {
             _this.index = this.activeIndex; //切换结束时，告诉我现在是第几个slide

@@ -7,7 +7,7 @@
             <li v-for="(item,index) in timeall[2]" @click="gochangeday([$route.params.cinemaId,$route.params.filmid,timeall[2],index])" :key="index" >
               <span>{{item|getday}}</span>
             </li>
-            <div class="tab-ink-bar-wrapper" :style="{transform:'translate3d('+this.observe+', 0px, 0px)'}">
+            <div class="tab-ink-bar-wrapper" :style="{transform:'translate3d('+observe+', 0px, 0px)'}">
               <span class="tab-ink-bar"></span>
             </div>
           </ul>
@@ -43,7 +43,7 @@ import Swiper from "swiper";
 export default {
   data(){
     return{
-      observe:'0%',
+      observe:'200%',
       date:' ',
       change:'121212'
     }

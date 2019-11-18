@@ -43,10 +43,10 @@
       <div class="filter-wrap">
         <ul class="cityall">
           <li>
-            <div @click="cityall">{{city}}</div>
+            <div @click="cityall" :class="{changecolor:active==-1}">{{city}}</div>
           </li>
-          <li v-for="(item,index) in cities" :key="index" @click="cityone(item)">
-            <div>{{item}}</div>
+          <li v-for="(item,index) in cities"  :key="index" @click="cityone(item,index)">
+            <div :class="{changecolor:active==index}">{{item}}</div>
           </li>
         </ul>
       </div>
@@ -68,23 +68,6 @@
         </ul>
       </div>
     </div>
-
-     <!-- <div
-      class="mint-popup area-box filter-box mint-popup-top"
-      style="z-index: 2093;"
-      v-show="hide1"
-    >
-      <div class="filter-wrap">
-        <ul class="filter-list">
-          <li :class="{origh:this.color}" @click="buytic">
-            <span class="filter-text">最近去过</span>
-          </li>
-          <li  :class="{origh:!color}" @click="buytic1">
-            <span class="filter-text">离我最近</span>
-          </li> 
-        </ul>
-      </div>
-    </div> -->
 
     <div class="cinema-list-wrap">
       <ul class="cinema-list">
@@ -134,8 +117,9 @@ export default {
       pathgo: "最近去过",
       cityguding: "全城",
       cities: [],
-      color:true
-    };
+      color:true,
+      active:-1
+     };
   },
   mounted() {
     this.getData();
@@ -176,8 +160,10 @@ export default {
       this.cityguding = this.city;
       this.lists = this.listssrc;
       this.hide = false;
+      this.active=-1
     },
-    cityone(data) {
+    cityone(data,data2) {
+      this.active=data2
       this.cityguding = data;
       this.lists = this.listssrc.filter(item => item.districtName == data);
       this.hide = false;
@@ -490,5 +476,8 @@ label img {
 }
 .origh{
       color: #ff5f16!important;
+}
+.changecolor{
+  border:1px solid #ff5f16
 }
 </style>
